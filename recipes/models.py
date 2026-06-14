@@ -10,12 +10,12 @@ class Recipe(models.Model):
         help_text="ID from TheMealDB, if imported"
     )
 
-    name = models.CharField(max_length=255)
-    category = models.CharField(max_length=100, blank=True)   # e.g. Seafood, Dessert
-    area = models.CharField(max_length=100, blank=True)       # cuisine, e.g. Italian
-    thumbnail = models.URLField(blank=True)                   # image URL
-    youtube_url = models.URLField(blank=True)
-    tags = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=500)
+    category = models.CharField(max_length=150, blank=True)   # e.g. Seafood, Dessert
+    area = models.CharField(max_length=150, blank=True)       # cuisine, e.g. Italian
+    thumbnail = models.URLField(max_length=500, blank=True)   # image URL
+    youtube_url = models.URLField(max_length=500, blank=True)
+    tags = models.CharField(max_length=500, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -32,8 +32,8 @@ class Ingredient(models.Model):
     recipe = models.ForeignKey(
         Recipe, related_name='ingredients', on_delete=models.CASCADE
     )
-    name = models.CharField(max_length=255)
-    measure = models.CharField(max_length=100, blank=True)   # e.g. "2 tbsp"
+    name = models.CharField(max_length=500)
+    measure = models.CharField(max_length=200, blank=True)   # e.g. "2 tbsp"
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
